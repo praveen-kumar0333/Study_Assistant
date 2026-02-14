@@ -37,10 +37,8 @@ def ask_ai(question, subject, persona, language, mode):
     prompt = f"""
 {personalities[persona]}
 {languages[language]}
-
 Subject: {subject}
 Mode: {mode}
-
 Explain clearly and helpfully.
 """
 
@@ -66,19 +64,16 @@ def generate_quiz(topic, subject, difficulty, language):
 
     prompt = f"""
 You are a quiz generator.
-
 Subject: {subject}
 Topic: {topic}
 Difficulty: {difficulty_map[difficulty]}
 Language rule: {languages[language]}
-
 Generate exactly 5 MCQ questions.
 Each question must have:
 A) option
 B) option
 C) option
 D) option
-
 After each question clearly write:
 Correct Answer: <option letter>
 """
@@ -102,9 +97,10 @@ body {
 .gradio-container {
     font-family: Poppins, sans-serif;
 }
-h1, h2, label {
-    color: white;
-}
+# h1, h2, label {
+#     color: black ;
+#     background-color: white;
+# }
 .card {
     background: rgba(255,255,255,0.12);
     border-radius: 16px;
