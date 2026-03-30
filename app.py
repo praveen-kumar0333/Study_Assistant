@@ -3,10 +3,10 @@ from google import genai
 from google.genai import types
 import os
 
-# ================= GEMINI CLIENT =================
+
 client = genai.Client(api_key=os.getenv("GEMINI_API_KEY"))
 
-# ================= DATA =================
+
 subjects = [
     "General",
     "Mathematics",
@@ -32,7 +32,6 @@ languages = {
     "Marathi": "Respond fully in Marathi."
 }
 
-# ================= STUDY CHAT FUNCTION =================
 def ask_ai(question, subject, persona, language, mode):
     prompt = f"""
 {personalities[persona]}
@@ -48,12 +47,11 @@ Explain clearly and helpfully.
             system_instruction=prompt,
             temperature=0.4,
             max_output_tokens=2000
-        ),
+        )
         contents=question
     )
     return response.text
 
-# ================= QUIZ FUNCTION =================
 def generate_quiz(topic, subject, difficulty, language):
     difficulty_map = {
         "LKG 🍼": "Very very simple questions for kids.",
@@ -89,7 +87,7 @@ Correct Answer: <option letter>
 
     return response.text
 
-# ================= CSS =================
+
 css = """
 body {
     background: linear-gradient(135deg,#667eea,#764ba2);
@@ -117,7 +115,6 @@ button {
 }
 """
 
-# ================= UI =================
 with gr.Blocks(css=css) as demo:
 
     gr.Markdown("<h1 align='center'>🌈 Personal AI Study Assistant</h1>")
@@ -165,7 +162,7 @@ with gr.Blocks(css=css) as demo:
                 outputs=answer
             )
 
-        # ============ QUIZ TAB ============
+    
         with gr.Tab("📝 Quiz & MCQs"):
             with gr.Column(elem_classes="card"):
 
